@@ -13,13 +13,13 @@ Disassembly of section .text.boot:
    80010: d5384241     	mrs	x1, CurrentEL
    80014: d342fc21     	lsr	x1, x1, #2
    80018: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8001c: 9137c000     	add	x0, x0, #0xdf0
+   8001c: 912ba000     	add	x0, x0, #0xae8
    80020: d0000001     	adrp	x1, 0x82000 <_estack_size+0x72000>
-   80024: 9137e021     	add	x1, x1, #0xdf8
+   80024: 912bc021     	add	x1, x1, #0xaf0
    80028: cb000021     	sub	x1, x1, x0
-   8002c: 940006a4     	bl	0x81abc <memzero>
-   80030: 90002120     	adrp	x0, 0x4a4000 <__stack_start+0xf1c8>
-   80034: 9138e000     	add	x0, x0, #0xe38
+   8002c: 94000620     	bl	0x818ac <memzero>
+   80030: 90002120     	adrp	x0, 0x4a4000 <__stack_start+0xf4d0>
+   80034: 912cc000     	add	x0, x0, #0xb30
    80038: 9100001f     	mov	sp, x0
    8003c: 9400037e     	bl	0x80e34 <kernel_main>
    80040: 14000001     	b	0x80044 <proc_hang>
@@ -77,14 +77,14 @@ Disassembly of section .text:
    800f0: b94023e1     	ldr	w1, [sp, #0x20]
    800f4: b9101801     	str	w1, [x0, #0x1018]
    800f8: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
-   800fc: 912ba000     	add	x0, x0, #0xae8
+   800fc: 91236000     	add	x0, x0, #0x8d8
    80100: 94000486     	bl	0x81318 <uart_send_string>
    80104: f94017e0     	ldr	x0, [sp, #0x28]
    80108: 91482000     	add	x0, x0, #0x208, lsl #12 // =0x208000
    8010c: b9500000     	ldr	w0, [x0, #0x1000]
    80110: 940004ac     	bl	0x813c0 <uart_send_hex>
    80114: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
-   80118: 912c2000     	add	x0, x0, #0xb08
+   80118: 9123e000     	add	x0, x0, #0x8f8
    8011c: 9400047f     	bl	0x81318 <uart_send_string>
    80120: f94017e0     	ldr	x0, [sp, #0x28]
    80124: 91482000     	add	x0, x0, #0x208, lsl #12 // =0x208000
@@ -92,12 +92,12 @@ Disassembly of section .text:
    8012c: 7100001f     	cmp	w0, #0x0
    80130: 54000080     	b.eq	0x80140 <update_reference_checksums+0x9c>
    80134: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
-   80138: 912ca000     	add	x0, x0, #0xb28
+   80138: 91246000     	add	x0, x0, #0x918
    8013c: 94000477     	bl	0x81318 <uart_send_string>
    80140: f9400fe0     	ldr	x0, [sp, #0x18]
    80144: 94000475     	bl	0x81318 <uart_send_string>
    80148: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
-   8014c: 912ce000     	add	x0, x0, #0xb38
+   8014c: 9124a000     	add	x0, x0, #0x928
    80150: 94000472     	bl	0x81318 <uart_send_string>
    80154: d503201f     	nop
    80158: a8c37bfd     	ldp	x29, x30, [sp], #0x30
@@ -109,21 +109,21 @@ Disassembly of section .text:
    80168: 528000a0     	mov	w0, #0x5                // =5
    8016c: 94000482     	bl	0x81374 <uart_line_breaks>
    80170: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
-   80174: 912d0000     	add	x0, x0, #0xb40
+   80174: 9124c000     	add	x0, x0, #0x930
    80178: 94000468     	bl	0x81318 <uart_send_string>
    8017c: 52800040     	mov	w0, #0x2                // =2
    80180: 9400047d     	bl	0x81374 <uart_line_breaks>
    80184: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
-   80188: 912d8000     	add	x0, x0, #0xb60
+   80188: 91254000     	add	x0, x0, #0x950
    8018c: 94000463     	bl	0x81318 <uart_send_string>
-   80190: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80194: 9102e000     	add	x0, x0, #0xb8
+   80190: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   80194: 913aa000     	add	x0, x0, #0xea8
    80198: 94000460     	bl	0x81318 <uart_send_string>
-   8019c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   801a0: 9103a000     	add	x0, x0, #0xe8
+   8019c: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   801a0: 913b6000     	add	x0, x0, #0xed8
    801a4: 9400045d     	bl	0x81318 <uart_send_string>
-   801a8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   801ac: 9104c000     	add	x0, x0, #0x130
+   801a8: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   801ac: 913c8000     	add	x0, x0, #0xf20
    801b0: 9400045a     	bl	0x81318 <uart_send_string>
    801b4: d503201f     	nop
    801b8: a8c17bfd     	ldp	x29, x30, [sp], #0x10
@@ -132,29 +132,29 @@ Disassembly of section .text:
 00000000000801c0 <send_command_description>:
    801c0: a9bf7bfd     	stp	x29, x30, [sp, #-0x10]!
    801c4: 910003fd     	mov	x29, sp
-   801c8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   801cc: 9105e000     	add	x0, x0, #0x178
+   801c8: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   801cc: 913da000     	add	x0, x0, #0xf68
    801d0: 94000452     	bl	0x81318 <uart_send_string>
-   801d4: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   801d8: 91062000     	add	x0, x0, #0x188
+   801d4: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   801d8: 913de000     	add	x0, x0, #0xf78
    801dc: 9400044f     	bl	0x81318 <uart_send_string>
-   801e0: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   801e4: 91068000     	add	x0, x0, #0x1a0
+   801e0: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   801e4: 913e4000     	add	x0, x0, #0xf90
    801e8: 9400044c     	bl	0x81318 <uart_send_string>
-   801ec: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   801f0: 91070000     	add	x0, x0, #0x1c0
+   801ec: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   801f0: 913ec000     	add	x0, x0, #0xfb0
    801f4: 94000449     	bl	0x81318 <uart_send_string>
-   801f8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   801fc: 91076000     	add	x0, x0, #0x1d8
+   801f8: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   801fc: 913f2000     	add	x0, x0, #0xfc8
    80200: 94000446     	bl	0x81318 <uart_send_string>
-   80204: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80208: 9107e000     	add	x0, x0, #0x1f8
+   80204: b0000000     	adrp	x0, 0x81000 <kernel_main+0x1cc>
+   80208: 913fa000     	add	x0, x0, #0xfe8
    8020c: 94000443     	bl	0x81318 <uart_send_string>
    80210: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80214: 91086000     	add	x0, x0, #0x218
+   80214: 91002000     	add	x0, x0, #0x8
    80218: 94000440     	bl	0x81318 <uart_send_string>
    8021c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80220: 91090000     	add	x0, x0, #0x240
+   80220: 9100c000     	add	x0, x0, #0x30
    80224: 9400043d     	bl	0x81318 <uart_send_string>
    80228: d503201f     	nop
    8022c: a8c17bfd     	ldp	x29, x30, [sp], #0x10
@@ -164,7 +164,7 @@ Disassembly of section .text:
    80234: d10043ff     	sub	sp, sp, #0x10
    80238: b9000fe0     	str	w0, [sp, #0xc]
    8023c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80240: 9136a000     	add	x0, x0, #0xda8
+   80240: 912a8000     	add	x0, x0, #0xaa0
    80244: b9400fe1     	ldr	w1, [sp, #0xc]
    80248: b9000001     	str	w1, [x0]
    8024c: d503201f     	nop
@@ -173,7 +173,7 @@ Disassembly of section .text:
 
 0000000000080258 <get_curr_arr_size>:
    80258: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8025c: 9136a000     	add	x0, x0, #0xda8
+   8025c: 912a8000     	add	x0, x0, #0xaa0
    80260: b9400000     	ldr	w0, [x0]
    80264: d65f03c0     	ret
 
@@ -186,21 +186,21 @@ Disassembly of section .text:
    8027c: 97fffff7     	bl	0x80258 <get_curr_arr_size>
    80280: b9003fe0     	str	w0, [sp, #0x3c]
    80284: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80288: 9109a000     	add	x0, x0, #0x268
+   80288: 91016000     	add	x0, x0, #0x58
    8028c: 94000423     	bl	0x81318 <uart_send_string>
    80290: f9400fe0     	ldr	x0, [sp, #0x18]
    80294: 94000421     	bl	0x81318 <uart_send_string>
    80298: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8029c: 9109e000     	add	x0, x0, #0x278
+   8029c: 9101a000     	add	x0, x0, #0x68
    802a0: 9400041e     	bl	0x81318 <uart_send_string>
    802a4: b94027e1     	ldr	w1, [sp, #0x24]
    802a8: f94017e0     	ldr	x0, [sp, #0x28]
-   802ac: 940005a7     	bl	0x81948 <test_array_fill>
+   802ac: 94000523     	bl	0x81738 <test_array_fill>
    802b0: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   802b4: 910a0000     	add	x0, x0, #0x280
+   802b4: 9101c000     	add	x0, x0, #0x70
    802b8: 94000418     	bl	0x81318 <uart_send_string>
    802bc: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   802c0: 910a2000     	add	x0, x0, #0x288
+   802c0: 9101e000     	add	x0, x0, #0x78
    802c4: 94000415     	bl	0x81318 <uart_send_string>
    802c8: 52800023     	mov	w3, #0x1                // =1
    802cc: f9400fe2     	ldr	x2, [sp, #0x18]
@@ -218,19 +218,19 @@ Disassembly of section .text:
    802f4: 97ffffd9     	bl	0x80258 <get_curr_arr_size>
    802f8: b9002fe0     	str	w0, [sp, #0x2c]
    802fc: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80300: 910aa000     	add	x0, x0, #0x2a8
+   80300: 91026000     	add	x0, x0, #0x98
    80304: 94000405     	bl	0x81318 <uart_send_string>
    80308: f9400fe0     	ldr	x0, [sp, #0x18]
-   8030c: 940005bc     	bl	0x819fc <test_array_fill_incremental>
+   8030c: 94000538     	bl	0x817ec <test_array_fill_incremental>
    80310: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80314: 910a0000     	add	x0, x0, #0x280
+   80314: 9101c000     	add	x0, x0, #0x70
    80318: 94000400     	bl	0x81318 <uart_send_string>
    8031c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80320: 910b2000     	add	x0, x0, #0x2c8
+   80320: 9102e000     	add	x0, x0, #0xb8
    80324: 940003fd     	bl	0x81318 <uart_send_string>
    80328: 52800003     	mov	w3, #0x0                // =0
    8032c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80330: 910ba002     	add	x2, x0, #0x2e8
+   80330: 91036002     	add	x2, x0, #0xd8
    80334: b9402fe1     	ldr	w1, [sp, #0x2c]
    80338: f9400fe0     	ldr	x0, [sp, #0x18]
    8033c: 97ffff5a     	bl	0x800a4 <update_reference_checksums>
@@ -245,33 +245,33 @@ Disassembly of section .text:
    80358: 97ffffc0     	bl	0x80258 <get_curr_arr_size>
    8035c: b9002fe0     	str	w0, [sp, #0x2c]
    80360: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80364: 910c0000     	add	x0, x0, #0x300
+   80364: 9103c000     	add	x0, x0, #0xf0
    80368: 940003ec     	bl	0x81318 <uart_send_string>
    8036c: b9402fe1     	ldr	w1, [sp, #0x2c]
    80370: f9400fe0     	ldr	x0, [sp, #0x18]
    80374: 97ffff36     	bl	0x8004c <compute_xor_checksum>
    80378: b9002be0     	str	w0, [sp, #0x28]
    8037c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80380: 910c8000     	add	x0, x0, #0x320
+   80380: 91044000     	add	x0, x0, #0x110
    80384: 940003e5     	bl	0x81318 <uart_send_string>
    80388: b9402be0     	ldr	w0, [sp, #0x28]
    8038c: 9400040d     	bl	0x813c0 <uart_send_hex>
    80390: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80394: 910d0000     	add	x0, x0, #0x340
+   80394: 9104c000     	add	x0, x0, #0x130
    80398: 940003e0     	bl	0x81318 <uart_send_string>
    8039c: f9400fe0     	ldr	x0, [sp, #0x18]
    803a0: 91482000     	add	x0, x0, #0x208, lsl #12 // =0x208000
    803a4: b9500000     	ldr	w0, [x0, #0x1000]
    803a8: 94000406     	bl	0x813c0 <uart_send_hex>
    803ac: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   803b0: 910d8000     	add	x0, x0, #0x360
+   803b0: 91054000     	add	x0, x0, #0x150
    803b4: 940003d9     	bl	0x81318 <uart_send_string>
    803b8: f9400fe0     	ldr	x0, [sp, #0x18]
    803bc: 91482000     	add	x0, x0, #0x208, lsl #12 // =0x208000
    803c0: f9480800     	ldr	x0, [x0, #0x1010]
    803c4: 940003d5     	bl	0x81318 <uart_send_string>
    803c8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   803cc: 910dc000     	add	x0, x0, #0x370
+   803cc: 91058000     	add	x0, x0, #0x160
    803d0: 940003d2     	bl	0x81318 <uart_send_string>
    803d4: f9400fe0     	ldr	x0, [sp, #0x18]
    803d8: 91482000     	add	x0, x0, #0x208, lsl #12 // =0x208000
@@ -279,7 +279,7 @@ Disassembly of section .text:
    803e0: 7100001f     	cmp	w0, #0x0
    803e4: 54000080     	b.eq	0x803f4 <do_checksum_xor+0xa8>
    803e8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   803ec: 910ea000     	add	x0, x0, #0x3a8
+   803ec: 91066000     	add	x0, x0, #0x198
    803f0: 940003ca     	bl	0x81318 <uart_send_string>
    803f4: f9400fe0     	ldr	x0, [sp, #0x18]
    803f8: 91482000     	add	x0, x0, #0x208, lsl #12 // =0x208000
@@ -292,10 +292,10 @@ Disassembly of section .text:
    80414: 6b00003f     	cmp	w1, w0
    80418: 54000081     	b.ne	0x80428 <do_checksum_xor+0xdc>
    8041c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80420: 910ee000     	add	x0, x0, #0x3b8
+   80420: 9106a000     	add	x0, x0, #0x1a8
    80424: 14000003     	b	0x80430 <do_checksum_xor+0xe4>
    80428: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8042c: 910f2000     	add	x0, x0, #0x3c8
+   8042c: 9106e000     	add	x0, x0, #0x1b8
    80430: 940003ba     	bl	0x81318 <uart_send_string>
    80434: d503201f     	nop
    80438: a8c37bfd     	ldp	x29, x30, [sp], #0x30
@@ -307,29 +307,29 @@ Disassembly of section .text:
    80448: f9000fe0     	str	x0, [sp, #0x18]
    8044c: b90017e1     	str	w1, [sp, #0x14]
    80450: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80454: 910f8000     	add	x0, x0, #0x3e0
+   80454: 91074000     	add	x0, x0, #0x1d0
    80458: 940003b0     	bl	0x81318 <uart_send_string>
    8045c: b94017e0     	ldr	w0, [sp, #0x14]
    80460: 94000446     	bl	0x81578 <uart_send_dec>
    80464: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80468: 91102000     	add	x0, x0, #0x408
+   80468: 9107e000     	add	x0, x0, #0x1f8
    8046c: 940003ab     	bl	0x81318 <uart_send_string>
    80470: b9002fff     	str	wzr, [sp, #0x2c]
    80474: 14000013     	b	0x804c0 <send_first_16_elements+0x80>
    80478: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8047c: 91104000     	add	x0, x0, #0x410
+   8047c: 91080000     	add	x0, x0, #0x200
    80480: 940003a6     	bl	0x81318 <uart_send_string>
    80484: b9402fe0     	ldr	w0, [sp, #0x2c]
    80488: 9400043c     	bl	0x81578 <uart_send_dec>
    8048c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80490: 91106000     	add	x0, x0, #0x418
+   80490: 91082000     	add	x0, x0, #0x208
    80494: 940003a1     	bl	0x81318 <uart_send_string>
    80498: f9400fe0     	ldr	x0, [sp, #0x18]
    8049c: b9402fe1     	ldr	w1, [sp, #0x2c]
    804a0: b8617800     	ldr	w0, [x0, x1, lsl #2]
    804a4: 940003c7     	bl	0x813c0 <uart_send_hex>
    804a8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   804ac: 9109e000     	add	x0, x0, #0x278
+   804ac: 9101a000     	add	x0, x0, #0x68
    804b0: 9400039a     	bl	0x81318 <uart_send_string>
    804b4: b9402fe0     	ldr	w0, [sp, #0x2c]
    804b8: 11000400     	add	w0, w0, #0x1
@@ -386,10 +386,10 @@ Disassembly of section .text:
    8056c: f90013e1     	str	x1, [sp, #0x20]
    80570: b9001fe2     	str	w2, [sp, #0x1c]
    80574: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80578: 91108000     	add	x0, x0, #0x420
+   80578: 91084000     	add	x0, x0, #0x210
    8057c: 94000367     	bl	0x81318 <uart_send_string>
    80580: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80584: 9110e000     	add	x0, x0, #0x438
+   80584: 9108a000     	add	x0, x0, #0x228
    80588: 94000364     	bl	0x81318 <uart_send_string>
    8058c: 52800021     	mov	w1, #0x1                // =1
    80590: 52800080     	mov	w0, #0x4                // =4
@@ -403,18 +403,18 @@ Disassembly of section .text:
    805b0: b9006be0     	str	w0, [sp, #0x68]
    805b4: b9009bff     	str	wzr, [sp, #0x98]
    805b8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   805bc: 9137d000     	add	x0, x0, #0xdf4
+   805bc: 912bb000     	add	x0, x0, #0xaec
    805c0: b9406be1     	ldr	w1, [sp, #0x68]
    805c4: b9000001     	str	w1, [x0]
    805c8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   805cc: 91114000     	add	x0, x0, #0x450
+   805cc: 91090000     	add	x0, x0, #0x240
    805d0: 94000352     	bl	0x81318 <uart_send_string>
    805d4: b9401fe1     	ldr	w1, [sp, #0x1c]
    805d8: f94017e0     	ldr	x0, [sp, #0x28]
    805dc: 97fffe9c     	bl	0x8004c <compute_xor_checksum>
    805e0: b90097e0     	str	w0, [sp, #0x94]
    805e4: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   805e8: 91120000     	add	x0, x0, #0x480
+   805e8: 9109c000     	add	x0, x0, #0x270
    805ec: 9400034b     	bl	0x81318 <uart_send_string>
    805f0: b9409fe0     	ldr	w0, [sp, #0x9c]
    805f4: 11000400     	add	w0, w0, #0x1
@@ -428,37 +428,37 @@ Disassembly of section .text:
    80614: 7101fc1f     	cmp	w0, #0x7f
    80618: 54000521     	b.ne	0x806bc <run_emfi_test+0x15c>
    8061c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80620: 91122000     	add	x0, x0, #0x488
+   80620: 9109e000     	add	x0, x0, #0x278
    80624: 9400033d     	bl	0x81318 <uart_send_string>
    80628: b9409fe0     	ldr	w0, [sp, #0x9c]
    8062c: 940003d3     	bl	0x81578 <uart_send_dec>
    80630: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80634: 9112c000     	add	x0, x0, #0x4b0
+   80634: 910a8000     	add	x0, x0, #0x2a0
    80638: 94000338     	bl	0x81318 <uart_send_string>
    8063c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80640: 9112e000     	add	x0, x0, #0x4b8
+   80640: 910aa000     	add	x0, x0, #0x2a8
    80644: 94000335     	bl	0x81318 <uart_send_string>
    80648: b9409fe0     	ldr	w0, [sp, #0x9c]
    8064c: 940003cb     	bl	0x81578 <uart_send_dec>
    80650: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80654: 91138000     	add	x0, x0, #0x4e0
+   80654: 910b4000     	add	x0, x0, #0x2d0
    80658: 94000330     	bl	0x81318 <uart_send_string>
    8065c: b90093ff     	str	wzr, [sp, #0x90]
    80660: 14000013     	b	0x806ac <run_emfi_test+0x14c>
    80664: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80668: 9113a000     	add	x0, x0, #0x4e8
+   80668: 910b6000     	add	x0, x0, #0x2d8
    8066c: 9400032b     	bl	0x81318 <uart_send_string>
    80670: b94093e0     	ldr	w0, [sp, #0x90]
    80674: 940003c1     	bl	0x81578 <uart_send_dec>
    80678: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8067c: 9113c000     	add	x0, x0, #0x4f0
+   8067c: 910b8000     	add	x0, x0, #0x2e0
    80680: 94000326     	bl	0x81318 <uart_send_string>
    80684: f94017e0     	ldr	x0, [sp, #0x28]
    80688: b94093e1     	ldr	w1, [sp, #0x90]
    8068c: b8617800     	ldr	w0, [x0, x1, lsl #2]
    80690: 9400034c     	bl	0x813c0 <uart_send_hex>
    80694: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80698: 9112c000     	add	x0, x0, #0x4b0
+   80698: 910a8000     	add	x0, x0, #0x2a0
    8069c: 9400031f     	bl	0x81318 <uart_send_string>
    806a0: b94093e0     	ldr	w0, [sp, #0x90]
    806a4: 11000400     	add	w0, w0, #0x1
@@ -505,7 +505,7 @@ Disassembly of section .text:
    80748: f9002fe0     	str	x0, [sp, #0x58]
    8074c: f9003fff     	str	xzr, [sp, #0x78]
    80750: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80754: 9113e000     	add	x0, x0, #0x4f8
+   80754: 910ba000     	add	x0, x0, #0x2e8
    80758: 940002f0     	bl	0x81318 <uart_send_string>
    8075c: 14000009     	b	0x80780 <run_emfi_test+0x220>
    80760: f94043e0     	ldr	x0, [sp, #0x80]
@@ -531,25 +531,25 @@ Disassembly of section .text:
    807b0: 6b00003f     	cmp	w1, w0
    807b4: 54000b00     	b.eq	0x80914 <run_emfi_test+0x3b4>
    807b8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   807bc: 91140000     	add	x0, x0, #0x500
+   807bc: 910bc000     	add	x0, x0, #0x2f0
    807c0: 940002d6     	bl	0x81318 <uart_send_string>
    807c4: b9409fe0     	ldr	w0, [sp, #0x9c]
    807c8: 9400036c     	bl	0x81578 <uart_send_dec>
    807cc: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   807d0: 9114a000     	add	x0, x0, #0x528
+   807d0: 910c6000     	add	x0, x0, #0x318
    807d4: 940002d1     	bl	0x81318 <uart_send_string>
    807d8: b94097e0     	ldr	w0, [sp, #0x94]
    807dc: 940002f9     	bl	0x813c0 <uart_send_hex>
    807e0: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   807e4: 91156000     	add	x0, x0, #0x558
+   807e4: 910d2000     	add	x0, x0, #0x348
    807e8: 940002cc     	bl	0x81318 <uart_send_string>
    807ec: b94057e0     	ldr	w0, [sp, #0x54]
    807f0: 940002f4     	bl	0x813c0 <uart_send_hex>
    807f4: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   807f8: 9112c000     	add	x0, x0, #0x4b0
+   807f8: 910a8000     	add	x0, x0, #0x2a0
    807fc: 940002c7     	bl	0x81318 <uart_send_string>
    80800: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80804: 9115e000     	add	x0, x0, #0x578
+   80804: 910da000     	add	x0, x0, #0x368
    80808: 940002c4     	bl	0x81318 <uart_send_string>
    8080c: 940003c3     	bl	0x81718 <uart_read_ready>
    80810: 7100001f     	cmp	w0, #0x0
@@ -562,15 +562,15 @@ Disassembly of section .text:
    8082c: 17fffff8     	b	0x8080c <run_emfi_test+0x2ac>
    80830: d503201f     	nop
    80834: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80838: 9116e000     	add	x0, x0, #0x5b8
+   80838: 910ea000     	add	x0, x0, #0x3a8
    8083c: 940002b7     	bl	0x81318 <uart_send_string>
    80840: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80844: 91178000     	add	x0, x0, #0x5e0
+   80844: 910f4000     	add	x0, x0, #0x3d0
    80848: 940002b4     	bl	0x81318 <uart_send_string>
    8084c: b90077ff     	str	wzr, [sp, #0x74]
    80850: 14000022     	b	0x808d8 <run_emfi_test+0x378>
    80854: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80858: 9113e000     	add	x0, x0, #0x4f8
+   80858: 910ba000     	add	x0, x0, #0x2e8
    8085c: 940002af     	bl	0x81318 <uart_send_string>
    80860: b90073ff     	str	wzr, [sp, #0x70]
    80864: 14000016     	b	0x808bc <run_emfi_test+0x35c>
@@ -611,10 +611,10 @@ Disassembly of section .text:
    808f0: f94017e0     	ldr	x0, [sp, #0x28]
    808f4: 94000079     	bl	0x80ad8 <print_array_diffs>
    808f8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   808fc: 91188000     	add	x0, x0, #0x620
+   808fc: 91104000     	add	x0, x0, #0x410
    80900: 94000286     	bl	0x81318 <uart_send_string>
    80904: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80908: 9118e000     	add	x0, x0, #0x638
+   80908: 9110a000     	add	x0, x0, #0x428
    8090c: 94000283     	bl	0x81318 <uart_send_string>
    80910: 1400004c     	b	0x80a40 <run_emfi_test+0x4e0>
    80914: b94057e0     	ldr	w0, [sp, #0x54]
@@ -624,29 +624,29 @@ Disassembly of section .text:
    80924: 7100001f     	cmp	w0, #0x0
    80928: 54000401     	b.ne	0x809a8 <run_emfi_test+0x448>
    8092c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80930: 91196000     	add	x0, x0, #0x658
+   80930: 91112000     	add	x0, x0, #0x448
    80934: 94000279     	bl	0x81318 <uart_send_string>
    80938: b9409fe0     	ldr	w0, [sp, #0x9c]
    8093c: 9400030f     	bl	0x81578 <uart_send_dec>
    80940: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80944: 91138000     	add	x0, x0, #0x4e0
+   80944: 910b4000     	add	x0, x0, #0x2d0
    80948: 94000274     	bl	0x81318 <uart_send_string>
    8094c: b9006fff     	str	wzr, [sp, #0x6c]
    80950: 14000013     	b	0x8099c <run_emfi_test+0x43c>
    80954: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80958: 9113a000     	add	x0, x0, #0x4e8
+   80958: 910b6000     	add	x0, x0, #0x2d8
    8095c: 9400026f     	bl	0x81318 <uart_send_string>
    80960: b9406fe0     	ldr	w0, [sp, #0x6c]
    80964: 94000305     	bl	0x81578 <uart_send_dec>
    80968: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8096c: 9113c000     	add	x0, x0, #0x4f0
+   8096c: 910b8000     	add	x0, x0, #0x2e0
    80970: 9400026a     	bl	0x81318 <uart_send_string>
    80974: f94017e0     	ldr	x0, [sp, #0x28]
    80978: b9406fe1     	ldr	w1, [sp, #0x6c]
    8097c: b8617800     	ldr	w0, [x0, x1, lsl #2]
    80980: 94000290     	bl	0x813c0 <uart_send_hex>
    80984: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80988: 911a2000     	add	x0, x0, #0x688
+   80988: 9111e000     	add	x0, x0, #0x478
    8098c: 94000263     	bl	0x81318 <uart_send_string>
    80990: b9406fe0     	ldr	w0, [sp, #0x6c]
    80994: 11000400     	add	w0, w0, #0x1
@@ -659,7 +659,7 @@ Disassembly of section .text:
    809b0: b9400000     	ldr	w0, [x0]
    809b4: b90053e0     	str	w0, [sp, #0x50]
    809b8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   809bc: 9137d000     	add	x0, x0, #0xdf4
+   809bc: 912bb000     	add	x0, x0, #0xaec
    809c0: b9400000     	ldr	w0, [x0]
    809c4: b94053e1     	ldr	w1, [sp, #0x50]
    809c8: 4b000020     	sub	w0, w1, w0
@@ -679,17 +679,17 @@ Disassembly of section .text:
    80a00: b9404be0     	ldr	w0, [sp, #0x48]
    80a04: b9009be0     	str	w0, [sp, #0x98]
    80a08: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80a0c: 911a4000     	add	x0, x0, #0x690
+   80a0c: 91120000     	add	x0, x0, #0x480
    80a10: 94000242     	bl	0x81318 <uart_send_string>
    80a14: b9404be0     	ldr	w0, [sp, #0x48]
    80a18: 940002d8     	bl	0x81578 <uart_send_dec>
    80a1c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80a20: 911aa000     	add	x0, x0, #0x6a8
+   80a20: 91126000     	add	x0, x0, #0x498
    80a24: 9400023d     	bl	0x81318 <uart_send_string>
    80a28: b9409fe0     	ldr	w0, [sp, #0x9c]
    80a2c: 940002d3     	bl	0x81578 <uart_send_dec>
    80a30: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80a34: 9112c000     	add	x0, x0, #0x4b0
+   80a34: 910a8000     	add	x0, x0, #0x2a0
    80a38: 94000238     	bl	0x81318 <uart_send_string>
    80a3c: 17fffeed     	b	0x805f0 <run_emfi_test+0x90>
    80a40: a8ca7bfd     	ldp	x29, x30, [sp], #0xa0
@@ -703,7 +703,7 @@ Disassembly of section .text:
    80a58: b90017e2     	str	w2, [sp, #0x14]
    80a5c: b90013e3     	str	w3, [sp, #0x10]
    80a60: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80a64: 911ac000     	add	x0, x0, #0x6b0
+   80a64: 91128000     	add	x0, x0, #0x4a0
    80a68: 9400022c     	bl	0x81318 <uart_send_string>
    80a6c: b9401fe0     	ldr	w0, [sp, #0x1c]
    80a70: 940002c2     	bl	0x81578 <uart_send_dec>
@@ -712,22 +712,22 @@ Disassembly of section .text:
    80a7c: 6b00003f     	cmp	w1, w0
    80a80: 540000cd     	b.le	0x80a98 <print_diff_range+0x50>
    80a84: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80a88: 911ae000     	add	x0, x0, #0x6b8
+   80a88: 9112a000     	add	x0, x0, #0x4a8
    80a8c: 94000223     	bl	0x81318 <uart_send_string>
    80a90: b9401be0     	ldr	w0, [sp, #0x18]
    80a94: 940002b9     	bl	0x81578 <uart_send_dec>
    80a98: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80a9c: 911b0000     	add	x0, x0, #0x6c0
+   80a9c: 9112c000     	add	x0, x0, #0x4b0
    80aa0: 9400021e     	bl	0x81318 <uart_send_string>
    80aa4: b94017e0     	ldr	w0, [sp, #0x14]
    80aa8: 94000246     	bl	0x813c0 <uart_send_hex>
    80aac: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80ab0: 911b4000     	add	x0, x0, #0x6d0
+   80ab0: 91130000     	add	x0, x0, #0x4c0
    80ab4: 94000219     	bl	0x81318 <uart_send_string>
    80ab8: b94013e0     	ldr	w0, [sp, #0x10]
    80abc: 94000241     	bl	0x813c0 <uart_send_hex>
    80ac0: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80ac4: 9112c000     	add	x0, x0, #0x4b0
+   80ac4: 910a8000     	add	x0, x0, #0x2a0
    80ac8: 94000214     	bl	0x81318 <uart_send_string>
    80acc: d503201f     	nop
    80ad0: a8c27bfd     	ldp	x29, x30, [sp], #0x20
@@ -887,7 +887,7 @@ Disassembly of section .text:
    80d20: d2bfc400     	mov	x0, #0xfe200000         // =4263510016
    80d24: b900941f     	str	wzr, [x0, #0x94]
    80d28: d28012c0     	mov	x0, #0x96               // =150
-   80d2c: 94000368     	bl	0x81acc <delay>
+   80d2c: 940002e4     	bl	0x818bc <delay>
    80d30: 39407fe0     	ldrb	w0, [sp, #0x1f]
    80d34: 12001000     	and	w0, w0, #0x1f
    80d38: 52800021     	mov	w1, #0x1                // =1
@@ -902,7 +902,7 @@ Disassembly of section .text:
    80d5c: 8b000020     	add	x0, x1, x0
    80d60: b9000802     	str	w2, [x0, #0x8]
    80d64: d28012c0     	mov	x0, #0x96               // =150
-   80d68: 94000359     	bl	0x81acc <delay>
+   80d68: 940002d5     	bl	0x818bc <delay>
    80d6c: d2bfc400     	mov	x0, #0xfe200000         // =4263510016
    80d70: b900941f     	str	wzr, [x0, #0x94]
    80d74: d2bfc401     	mov	x1, #0xfe200000         // =4263510016
@@ -972,81 +972,81 @@ Disassembly of section .text:
    80e64: 528000a0     	mov	w0, #0x5                // =5
    80e68: 94000143     	bl	0x81374 <uart_line_breaks>
    80e6c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80e70: 911b8000     	add	x0, x0, #0x6e0
+   80e70: 91134000     	add	x0, x0, #0x4d0
    80e74: 94000129     	bl	0x81318 <uart_send_string>
    80e78: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80e7c: 911be000     	add	x0, x0, #0x6f8
+   80e7c: 9113a000     	add	x0, x0, #0x4e8
    80e80: 94000126     	bl	0x81318 <uart_send_string>
    80e84: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80e88: 9137e000     	add	x0, x0, #0xdf8
+   80e88: 912bc000     	add	x0, x0, #0xaf0
    80e8c: 9400014d     	bl	0x813c0 <uart_send_hex>
    80e90: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80e94: 911c2000     	add	x0, x0, #0x708
+   80e94: 9113e000     	add	x0, x0, #0x4f8
    80e98: 94000120     	bl	0x81318 <uart_send_string>
    80e9c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80ea0: 911c4000     	add	x0, x0, #0x710
+   80ea0: 91140000     	add	x0, x0, #0x500
    80ea4: 9400011d     	bl	0x81318 <uart_send_string>
-   80ea8: f0001040     	adrp	x0, 0x28b000 <arr+0x208208>
-   80eac: 91386000     	add	x0, x0, #0xe18
+   80ea8: f0001040     	adrp	x0, 0x28b000 <arr+0x208510>
+   80eac: 912c4000     	add	x0, x0, #0xb10
    80eb0: 94000144     	bl	0x813c0 <uart_send_hex>
    80eb4: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80eb8: 911c2000     	add	x0, x0, #0x708
+   80eb8: 9113e000     	add	x0, x0, #0x4f8
    80ebc: 94000117     	bl	0x81318 <uart_send_string>
    80ec0: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80ec4: 911c8000     	add	x0, x0, #0x720
+   80ec4: 91144000     	add	x0, x0, #0x510
    80ec8: 94000114     	bl	0x81318 <uart_send_string>
    80ecc: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80ed0: f946e800     	ldr	x0, [x0, #0xdd0]
+   80ed0: f9456400     	ldr	x0, [x0, #0xac8]
    80ed4: 9400013b     	bl	0x813c0 <uart_send_hex>
    80ed8: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80edc: 911c2000     	add	x0, x0, #0x708
+   80edc: 9113e000     	add	x0, x0, #0x4f8
    80ee0: 9400010e     	bl	0x81318 <uart_send_string>
    80ee4: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80ee8: 911cc000     	add	x0, x0, #0x730
+   80ee8: 91148000     	add	x0, x0, #0x520
    80eec: 9400010b     	bl	0x81318 <uart_send_string>
    80ef0: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80ef4: f946e000     	ldr	x0, [x0, #0xdc0]
+   80ef4: f9455c00     	ldr	x0, [x0, #0xab8]
    80ef8: 94000132     	bl	0x813c0 <uart_send_hex>
    80efc: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f00: 911c2000     	add	x0, x0, #0x708
+   80f00: 9113e000     	add	x0, x0, #0x4f8
    80f04: 94000105     	bl	0x81318 <uart_send_string>
    80f08: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f0c: 911d0000     	add	x0, x0, #0x740
+   80f0c: 9114c000     	add	x0, x0, #0x530
    80f10: 94000102     	bl	0x81318 <uart_send_string>
    80f14: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f18: f946dc00     	ldr	x0, [x0, #0xdb8]
+   80f18: f9455800     	ldr	x0, [x0, #0xab0]
    80f1c: 94000129     	bl	0x813c0 <uart_send_hex>
    80f20: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f24: 911c2000     	add	x0, x0, #0x708
+   80f24: 9113e000     	add	x0, x0, #0x4f8
    80f28: 940000fc     	bl	0x81318 <uart_send_string>
    80f2c: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f30: 911d6000     	add	x0, x0, #0x758
+   80f30: 91152000     	add	x0, x0, #0x548
    80f34: 940000f9     	bl	0x81318 <uart_send_string>
    80f38: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f3c: f946e400     	ldr	x0, [x0, #0xdc8]
+   80f3c: f9456000     	ldr	x0, [x0, #0xac0]
    80f40: 94000120     	bl	0x813c0 <uart_send_hex>
    80f44: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f48: 911c2000     	add	x0, x0, #0x708
+   80f48: 9113e000     	add	x0, x0, #0x4f8
    80f4c: 940000f3     	bl	0x81318 <uart_send_string>
    80f50: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f54: 911dc000     	add	x0, x0, #0x770
+   80f54: 91158000     	add	x0, x0, #0x560
    80f58: 940000f0     	bl	0x81318 <uart_send_string>
    80f5c: 52800040     	mov	w0, #0x2                // =2
    80f60: 94000105     	bl	0x81374 <uart_line_breaks>
    80f64: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f68: 911e2000     	add	x0, x0, #0x788
+   80f68: 9115e000     	add	x0, x0, #0x578
    80f6c: 940000eb     	bl	0x81318 <uart_send_string>
    80f70: 94000137     	bl	0x8144c <uart_receive_number>
    80f74: b9001be0     	str	w0, [sp, #0x18]
    80f78: b9401be0     	ldr	w0, [sp, #0x18]
    80f7c: 97fffcae     	bl	0x80234 <set_curr_arr_size>
    80f80: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f84: 911f8000     	add	x0, x0, #0x7e0
+   80f84: 91174000     	add	x0, x0, #0x5d0
    80f88: 940000e4     	bl	0x81318 <uart_send_string>
    80f8c: b9401be0     	ldr	w0, [sp, #0x18]
    80f90: 9400017a     	bl	0x81578 <uart_send_dec>
    80f94: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80f98: 91200000     	add	x0, x0, #0x800
+   80f98: 9117c000     	add	x0, x0, #0x5f0
    80f9c: 940000df     	bl	0x81318 <uart_send_string>
    80fa0: 52800040     	mov	w0, #0x2                // =2
    80fa4: 940000f4     	bl	0x81374 <uart_line_breaks>
@@ -1056,12 +1056,12 @@ Disassembly of section .text:
    80fb4: 940000cd     	bl	0x812e8 <uart_recv>
    80fb8: 39005fe0     	strb	w0, [sp, #0x17]
    80fbc: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80fc0: 9120a000     	add	x0, x0, #0x828
+   80fc0: 91186000     	add	x0, x0, #0x618
    80fc4: 940000d5     	bl	0x81318 <uart_send_string>
    80fc8: 39405fe0     	ldrb	w0, [sp, #0x17]
    80fcc: 940000b7     	bl	0x812a8 <uart_send>
    80fd0: d0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   80fd4: 911c2000     	add	x0, x0, #0x708
+   80fd4: 9113e000     	add	x0, x0, #0x4f8
    80fd8: 940000d0     	bl	0x81318 <uart_send_string>
    80fdc: 9400009a     	bl	0x81244 <uart_flush>
    80fe0: 52800020     	mov	w0, #0x1                // =1
@@ -1093,64 +1093,64 @@ Disassembly of section .text:
    81048: 540001e0     	b.eq	0x81084 <kernel_main+0x250>
    8104c: 1400003a     	b	0x81134 <kernel_main+0x300>
    81050: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81054: 9120e002     	add	x2, x0, #0x838
+   81054: 9118a002     	add	x2, x0, #0x628
    81058: 52800001     	mov	w1, #0x0                // =0
    8105c: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81060: 9137e000     	add	x0, x0, #0xdf8
+   81060: 912bc000     	add	x0, x0, #0xaf0
    81064: 97fffc81     	bl	0x80268 <do_fill>
    81068: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8106c: 9120e002     	add	x2, x0, #0x838
+   8106c: 9118a002     	add	x2, x0, #0x628
    81070: 52800001     	mov	w1, #0x0                // =0
-   81074: d0001040     	adrp	x0, 0x28b000 <arr+0x208208>
-   81078: 91386000     	add	x0, x0, #0xe18
+   81074: d0001040     	adrp	x0, 0x28b000 <arr+0x208510>
+   81078: 912c4000     	add	x0, x0, #0xb10
    8107c: 97fffc7b     	bl	0x80268 <do_fill>
    81080: 14000033     	b	0x8114c <kernel_main+0x318>
    81084: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81088: 91210002     	add	x2, x0, #0x840
+   81088: 9118c002     	add	x2, x0, #0x630
    8108c: 12800001     	mov	w1, #-0x1               // =-1
    81090: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81094: 9137e000     	add	x0, x0, #0xdf8
+   81094: 912bc000     	add	x0, x0, #0xaf0
    81098: 97fffc74     	bl	0x80268 <do_fill>
    8109c: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   810a0: 91210002     	add	x2, x0, #0x840
+   810a0: 9118c002     	add	x2, x0, #0x630
    810a4: 12800001     	mov	w1, #-0x1               // =-1
-   810a8: d0001040     	adrp	x0, 0x28b000 <arr+0x208208>
-   810ac: 91386000     	add	x0, x0, #0xe18
+   810a8: d0001040     	adrp	x0, 0x28b000 <arr+0x208510>
+   810ac: 912c4000     	add	x0, x0, #0xb10
    810b0: 97fffc6e     	bl	0x80268 <do_fill>
    810b4: 14000026     	b	0x8114c <kernel_main+0x318>
    810b8: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   810bc: 9137e000     	add	x0, x0, #0xdf8
+   810bc: 912bc000     	add	x0, x0, #0xaf0
    810c0: 97fffc8a     	bl	0x802e8 <do_fill_incremental>
-   810c4: d0001040     	adrp	x0, 0x28b000 <arr+0x208208>
-   810c8: 91386000     	add	x0, x0, #0xe18
+   810c4: d0001040     	adrp	x0, 0x28b000 <arr+0x208510>
+   810c8: 912c4000     	add	x0, x0, #0xb10
    810cc: 97fffc87     	bl	0x802e8 <do_fill_incremental>
    810d0: 1400001f     	b	0x8114c <kernel_main+0x318>
    810d4: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   810d8: 91212000     	add	x0, x0, #0x848
+   810d8: 9118e000     	add	x0, x0, #0x638
    810dc: 9400008f     	bl	0x81318 <uart_send_string>
    810e0: 97fffc5e     	bl	0x80258 <get_curr_arr_size>
    810e4: b90013e0     	str	w0, [sp, #0x10]
    810e8: b94013e2     	ldr	w2, [sp, #0x10]
-   810ec: d0001040     	adrp	x0, 0x28b000 <arr+0x208208>
-   810f0: 91386001     	add	x1, x0, #0xe18
+   810ec: d0001040     	adrp	x0, 0x28b000 <arr+0x208510>
+   810f0: 912c4001     	add	x1, x0, #0xb10
    810f4: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   810f8: 9137e000     	add	x0, x0, #0xdf8
+   810f8: 912bc000     	add	x0, x0, #0xaf0
    810fc: 97fffd19     	bl	0x80560 <run_emfi_test>
    81100: 14000013     	b	0x8114c <kernel_main+0x318>
    81104: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81108: 9137e000     	add	x0, x0, #0xdf8
+   81108: 912bc000     	add	x0, x0, #0xaf0
    8110c: 97fffc90     	bl	0x8034c <do_checksum_xor>
    81110: 1400000f     	b	0x8114c <kernel_main+0x318>
    81114: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81118: 91218000     	add	x0, x0, #0x860
+   81118: 91194000     	add	x0, x0, #0x650
    8111c: 9400007f     	bl	0x81318 <uart_send_string>
    81120: 1400000b     	b	0x8114c <kernel_main+0x318>
    81124: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81128: 91218000     	add	x0, x0, #0x860
+   81128: 91194000     	add	x0, x0, #0x650
    8112c: 9400007b     	bl	0x81318 <uart_send_string>
    81130: 14000007     	b	0x8114c <kernel_main+0x318>
    81134: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81138: 9121e000     	add	x0, x0, #0x878
+   81138: 9119a000     	add	x0, x0, #0x668
    8113c: 94000077     	bl	0x81318 <uart_send_string>
    81140: 97fffc20     	bl	0x801c0 <send_command_description>
    81144: 39007fff     	strb	wzr, [sp, #0x1f]
@@ -1160,7 +1160,7 @@ Disassembly of section .text:
    81154: 7100001f     	cmp	w0, #0x0
    81158: 54fff2e0     	b.eq	0x80fb4 <kernel_main+0x180>
    8115c: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81160: 91224000     	add	x0, x0, #0x890
+   81160: 911a0000     	add	x0, x0, #0x680
    81164: 9400006d     	bl	0x81318 <uart_send_string>
    81168: 52800040     	mov	w0, #0x2                // =2
    8116c: 94000082     	bl	0x81374 <uart_line_breaks>
@@ -1311,7 +1311,7 @@ Disassembly of section .text:
    81380: b9002fff     	str	wzr, [sp, #0x2c]
    81384: 14000007     	b	0x813a0 <uart_line_breaks+0x2c>
    81388: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8138c: 91226000     	add	x0, x0, #0x898
+   8138c: 911a2000     	add	x0, x0, #0x688
    81390: 97ffffe2     	bl	0x81318 <uart_send_string>
    81394: b9402fe0     	ldr	w0, [sp, #0x2c]
    81398: 11000400     	add	w0, w0, #0x1
@@ -1330,7 +1330,7 @@ Disassembly of section .text:
    813c4: 910003fd     	mov	x29, sp
    813c8: b9001fe0     	str	w0, [sp, #0x1c]
    813cc: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   813d0: 91228000     	add	x0, x0, #0x8a0
+   813d0: 911a4000     	add	x0, x0, #0x690
    813d4: 9100a3e2     	add	x2, sp, #0x28
    813d8: aa0003e3     	mov	x3, x0
    813dc: a9400460     	ldp	x0, x1, [x3]
@@ -1375,7 +1375,7 @@ Disassembly of section .text:
    81470: 7100281f     	cmp	w0, #0xa
    81474: 54000161     	b.ne	0x814a0 <uart_receive_number+0x54>
    81478: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   8147c: 91226000     	add	x0, x0, #0x898
+   8147c: 911a2000     	add	x0, x0, #0x688
    81480: 97ffffa6     	bl	0x81318 <uart_send_string>
    81484: d503201f     	nop
    81488: b9802fe0     	ldrsw	x0, [sp, #0x2c]
@@ -1413,7 +1413,7 @@ Disassembly of section .text:
    81508: 51000400     	sub	w0, w0, #0x1
    8150c: b9002fe0     	str	w0, [sp, #0x2c]
    81510: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81514: 9122e000     	add	x0, x0, #0x8b8
+   81514: 911aa000     	add	x0, x0, #0x6a8
    81518: 97ffff80     	bl	0x81318 <uart_send_string>
    8151c: 17ffffcf     	b	0x81458 <uart_receive_number+0xc>
    81520: b9402be1     	ldr	w1, [sp, #0x28]
@@ -1557,270 +1557,120 @@ Disassembly of section .text:
    81730: 12001c00     	and	w0, w0, #0xff
    81734: d65f03c0     	ret
 
-0000000000081738 <delay_us>:
-   81738: d10083ff     	sub	sp, sp, #0x20
-   8173c: b9000fe0     	str	w0, [sp, #0xc]
-   81740: d2860080     	mov	x0, #0x3004             // =12292
-   81744: f2bfc000     	movk	x0, #0xfe00, lsl #16
-   81748: b9400000     	ldr	w0, [x0]
-   8174c: b9001fe0     	str	w0, [sp, #0x1c]
-   81750: d503201f     	nop
-   81754: d2860080     	mov	x0, #0x3004             // =12292
-   81758: f2bfc000     	movk	x0, #0xfe00, lsl #16
-   8175c: b9400001     	ldr	w1, [x0]
-   81760: b9401fe0     	ldr	w0, [sp, #0x1c]
-   81764: 4b000020     	sub	w0, w1, w0
-   81768: b9400fe1     	ldr	w1, [sp, #0xc]
-   8176c: 6b00003f     	cmp	w1, w0
-   81770: 54ffff28     	b.hi	0x81754 <delay_us+0x1c>
-   81774: d503201f     	nop
-   81778: d503201f     	nop
-   8177c: 910083ff     	add	sp, sp, #0x20
-   81780: d65f03c0     	ret
+0000000000081738 <test_array_fill>:
+   81738: a9bd7bfd     	stp	x29, x30, [sp, #-0x30]!
+   8173c: 910003fd     	mov	x29, sp
+   81740: f9000fe0     	str	x0, [sp, #0x18]
+   81744: b90017e1     	str	w1, [sp, #0x14]
+   81748: 97fffac4     	bl	0x80258 <get_curr_arr_size>
+   8174c: b9002be0     	str	w0, [sp, #0x28]
+   81750: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
+   81754: 911ac000     	add	x0, x0, #0x6b0
+   81758: 97fffef0     	bl	0x81318 <uart_send_string>
+   8175c: b9002fff     	str	wzr, [sp, #0x2c]
+   81760: 14000018     	b	0x817c0 <test_array_fill+0x88>
+   81764: f9400fe0     	ldr	x0, [sp, #0x18]
+   81768: b9402fe1     	ldr	w1, [sp, #0x2c]
+   8176c: b94017e2     	ldr	w2, [sp, #0x14]
+   81770: b8217802     	str	w2, [x0, x1, lsl #2]
+   81774: b9402fe1     	ldr	w1, [sp, #0x2c]
+   81778: 53057c22     	lsr	w2, w1, #5
+   8177c: 528b58a0     	mov	w0, #0x5ac5             // =23237
+   81780: 72a14f80     	movk	w0, #0xa7c, lsl #16
+   81784: 9ba07c40     	umull	x0, w2, w0
+   81788: d360fc00     	lsr	x0, x0, #32
+   8178c: 53077c00     	lsr	w0, w0, #7
+   81790: 5290d402     	mov	w2, #0x86a0             // =34464
+   81794: 72a00022     	movk	w2, #0x1, lsl #16
+   81798: 1b027c00     	mul	w0, w0, w2
+   8179c: 4b000020     	sub	w0, w1, w0
+   817a0: 7100001f     	cmp	w0, #0x0
+   817a4: 54000081     	b.ne	0x817b4 <test_array_fill+0x7c>
+   817a8: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
+   817ac: 911b0000     	add	x0, x0, #0x6c0
+   817b0: 97fffeda     	bl	0x81318 <uart_send_string>
+   817b4: b9402fe0     	ldr	w0, [sp, #0x2c]
+   817b8: 11000400     	add	w0, w0, #0x1
+   817bc: b9002fe0     	str	w0, [sp, #0x2c]
+   817c0: b9402fe1     	ldr	w1, [sp, #0x2c]
+   817c4: b9402be0     	ldr	w0, [sp, #0x28]
+   817c8: 6b00003f     	cmp	w1, w0
+   817cc: 54fffcc3     	b.lo	0x81764 <test_array_fill+0x2c>
+   817d0: d5033f9f     	dsb	sy
+   817d4: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
+   817d8: 911b2000     	add	x0, x0, #0x6c8
+   817dc: 97fffecf     	bl	0x81318 <uart_send_string>
+   817e0: d503201f     	nop
+   817e4: a8c37bfd     	ldp	x29, x30, [sp], #0x30
+   817e8: d65f03c0     	ret
 
-0000000000081784 <emfi_pulse_precise>:
-   81784: a9be7bfd     	stp	x29, x30, [sp, #-0x20]!
-   81788: 910003fd     	mov	x29, sp
-   8178c: b9001fe0     	str	w0, [sp, #0x1c]
-   81790: 52800021     	mov	w1, #0x1                // =1
-   81794: 52800080     	mov	w0, #0x4                // =4
-   81798: 97fffd83     	bl	0x80da4 <gpio_set>
-   8179c: b9401fe0     	ldr	w0, [sp, #0x1c]
-   817a0: 97ffffe6     	bl	0x81738 <delay_us>
-   817a4: 52800001     	mov	w1, #0x0                // =0
-   817a8: 52800080     	mov	w0, #0x4                // =4
-   817ac: 97fffd7e     	bl	0x80da4 <gpio_set>
-   817b0: d503201f     	nop
-   817b4: a8c27bfd     	ldp	x29, x30, [sp], #0x20
-   817b8: d65f03c0     	ret
+00000000000817ec <test_array_fill_incremental>:
+   817ec: a9bd7bfd     	stp	x29, x30, [sp, #-0x30]!
+   817f0: 910003fd     	mov	x29, sp
+   817f4: f9000fe0     	str	x0, [sp, #0x18]
+   817f8: 97fffa98     	bl	0x80258 <get_curr_arr_size>
+   817fc: b9002be0     	str	w0, [sp, #0x28]
+   81800: b9002fff     	str	wzr, [sp, #0x2c]
+   81804: 14000008     	b	0x81824 <test_array_fill_incremental+0x38>
+   81808: f9400fe0     	ldr	x0, [sp, #0x18]
+   8180c: b9402fe1     	ldr	w1, [sp, #0x2c]
+   81810: b9402fe2     	ldr	w2, [sp, #0x2c]
+   81814: b8217802     	str	w2, [x0, x1, lsl #2]
+   81818: b9402fe0     	ldr	w0, [sp, #0x2c]
+   8181c: 11000400     	add	w0, w0, #0x1
+   81820: b9002fe0     	str	w0, [sp, #0x2c]
+   81824: b9402fe1     	ldr	w1, [sp, #0x2c]
+   81828: b9402be0     	ldr	w0, [sp, #0x28]
+   8182c: 6b00003f     	cmp	w1, w0
+   81830: 54fffec3     	b.lo	0x81808 <test_array_fill_incremental+0x1c>
+   81834: 52800020     	mov	w0, #0x1                // =1
+   81838: 97fffecf     	bl	0x81374 <uart_line_breaks>
+   8183c: d503201f     	nop
+   81840: a8c37bfd     	ldp	x29, x30, [sp], #0x30
+   81844: d65f03c0     	ret
 
-00000000000817bc <dcache_clean_by_va>:
-   817bc: d10043ff     	sub	sp, sp, #0x10
-   817c0: f90007e0     	str	x0, [sp, #0x8]
-   817c4: f94007e0     	ldr	x0, [sp, #0x8]
-   817c8: d50b7a20     	dc	cvac, x0
-   817cc: d503201f     	nop
-   817d0: 910043ff     	add	sp, sp, #0x10
-   817d4: d65f03c0     	ret
+0000000000081848 <test_array_increment>:
+   81848: a9bd7bfd     	stp	x29, x30, [sp, #-0x30]!
+   8184c: 910003fd     	mov	x29, sp
+   81850: f9000fe0     	str	x0, [sp, #0x18]
+   81854: 97fffa81     	bl	0x80258 <get_curr_arr_size>
+   81858: b9002be0     	str	w0, [sp, #0x28]
+   8185c: b9002fff     	str	wzr, [sp, #0x2c]
+   81860: 1400000b     	b	0x8188c <test_array_increment+0x44>
+   81864: f9400fe0     	ldr	x0, [sp, #0x18]
+   81868: b9402fe1     	ldr	w1, [sp, #0x2c]
+   8186c: b8617800     	ldr	w0, [x0, x1, lsl #2]
+   81870: 11000402     	add	w2, w0, #0x1
+   81874: f9400fe0     	ldr	x0, [sp, #0x18]
+   81878: b9402fe1     	ldr	w1, [sp, #0x2c]
+   8187c: b8217802     	str	w2, [x0, x1, lsl #2]
+   81880: b9402fe0     	ldr	w0, [sp, #0x2c]
+   81884: 11000400     	add	w0, w0, #0x1
+   81888: b9002fe0     	str	w0, [sp, #0x2c]
+   8188c: b9402fe1     	ldr	w1, [sp, #0x2c]
+   81890: b9402be0     	ldr	w0, [sp, #0x28]
+   81894: 6b00003f     	cmp	w1, w0
+   81898: 54fffe63     	b.lo	0x81864 <test_array_increment+0x1c>
+   8189c: d503201f     	nop
+   818a0: d503201f     	nop
+   818a4: a8c37bfd     	ldp	x29, x30, [sp], #0x30
+   818a8: d65f03c0     	ret
 
-00000000000817d8 <dcache_clean_invalidate_by_va>:
-   817d8: d10043ff     	sub	sp, sp, #0x10
-   817dc: f90007e0     	str	x0, [sp, #0x8]
-   817e0: f94007e0     	ldr	x0, [sp, #0x8]
-   817e4: d50b7e20     	dc	civac, x0
-   817e8: d503201f     	nop
-   817ec: 910043ff     	add	sp, sp, #0x10
-   817f0: d65f03c0     	ret
+00000000000818ac <memzero>:
+   818ac: f800841f     	str	xzr, [x0], #0x8
+   818b0: f1002021     	subs	x1, x1, #0x8
+   818b4: 54ffffcc     	b.gt	0x818ac <memzero>
+   818b8: d65f03c0     	ret
 
-00000000000817f4 <dcache_clean_line_by_va>:
-   817f4: a9be7bfd     	stp	x29, x30, [sp, #-0x20]!
-   817f8: 910003fd     	mov	x29, sp
-   817fc: f9000fe0     	str	x0, [sp, #0x18]
-   81800: f9400fe0     	ldr	x0, [sp, #0x18]
-   81804: 97ffffee     	bl	0x817bc <dcache_clean_by_va>
-   81808: d503201f     	nop
-   8180c: a8c27bfd     	ldp	x29, x30, [sp], #0x20
-   81810: d65f03c0     	ret
+00000000000818bc <delay>:
+   818bc: f1000400     	subs	x0, x0, #0x1
+   818c0: 54ffffe1     	b.ne	0x818bc <delay>
+   818c4: d65f03c0     	ret
 
-0000000000081814 <dsb_ish>:
-   81814: d5033b9f     	dsb	ish
-   81818: d503201f     	nop
-   8181c: d65f03c0     	ret
+00000000000818c8 <put32>:
+   818c8: b9000001     	str	w1, [x0]
+   818cc: d65f03c0     	ret
 
-0000000000081820 <isb>:
-   81820: d5033fdf     	isb
-   81824: d503201f     	nop
-   81828: d65f03c0     	ret
-
-000000000008182c <flush_dcache_range_with_trigger_every_n>:
-   8182c: a9bb7bfd     	stp	x29, x30, [sp, #-0x50]!
-   81830: 910003fd     	mov	x29, sp
-   81834: f90017e0     	str	x0, [sp, #0x28]
-   81838: f90013e1     	str	x1, [sp, #0x20]
-   8183c: f9000fe2     	str	x2, [sp, #0x18]
-   81840: b90017e3     	str	w3, [sp, #0x14]
-   81844: f94017e0     	ldr	x0, [sp, #0x28]
-   81848: 927ae400     	and	x0, x0, #0xffffffffffffffc0
-   8184c: f90027e0     	str	x0, [sp, #0x48]
-   81850: f94017e0     	ldr	x0, [sp, #0x28]
-   81854: f94013e1     	ldr	x1, [sp, #0x20]
-   81858: 8b000020     	add	x0, x1, x0
-   8185c: f9001fe0     	str	x0, [sp, #0x38]
-   81860: f90023ff     	str	xzr, [sp, #0x40]
-   81864: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81868: 91230000     	add	x0, x0, #0x8c0
-   8186c: 97fffeab     	bl	0x81318 <uart_send_string>
-   81870: 14000011     	b	0x818b4 <flush_dcache_range_with_trigger_every_n+0x88>
-   81874: f94027e0     	ldr	x0, [sp, #0x48]
-   81878: d50b7e20     	dc	civac, x0
-   8187c: f9400fe0     	ldr	x0, [sp, #0x18]
-   81880: d1000401     	sub	x1, x0, #0x1
-   81884: f94023e0     	ldr	x0, [sp, #0x40]
-   81888: 8a000020     	and	x0, x1, x0
-   8188c: f100001f     	cmp	x0, #0x0
-   81890: 54000061     	b.ne	0x8189c <flush_dcache_range_with_trigger_every_n+0x70>
-   81894: b94017e0     	ldr	w0, [sp, #0x14]
-   81898: 97ffffbb     	bl	0x81784 <emfi_pulse_precise>
-   8189c: f94027e0     	ldr	x0, [sp, #0x48]
-   818a0: 91010000     	add	x0, x0, #0x40
-   818a4: f90027e0     	str	x0, [sp, #0x48]
-   818a8: f94023e0     	ldr	x0, [sp, #0x40]
-   818ac: 91000400     	add	x0, x0, #0x1
-   818b0: f90023e0     	str	x0, [sp, #0x40]
-   818b4: f94027e1     	ldr	x1, [sp, #0x48]
-   818b8: f9401fe0     	ldr	x0, [sp, #0x38]
-   818bc: eb00003f     	cmp	x1, x0
-   818c0: 54fffda3     	b.lo	0x81874 <flush_dcache_range_with_trigger_every_n+0x48>
-   818c4: d5033f9f     	dsb	sy
-   818c8: d5033fdf     	isb
-   818cc: d503201f     	nop
-   818d0: a8c57bfd     	ldp	x29, x30, [sp], #0x50
+00000000000818d0 <get32>:
+   818d0: b9400000     	ldr	w0, [x0]
    818d4: d65f03c0     	ret
-
-00000000000818d8 <flush_and_invalidate_dcache_range>:
-   818d8: a9bd7bfd     	stp	x29, x30, [sp, #-0x30]!
-   818dc: 910003fd     	mov	x29, sp
-   818e0: f9000fe0     	str	x0, [sp, #0x18]
-   818e4: f9000be1     	str	x1, [sp, #0x10]
-   818e8: f9400fe0     	ldr	x0, [sp, #0x18]
-   818ec: 927ae400     	and	x0, x0, #0xffffffffffffffc0
-   818f0: f90017e0     	str	x0, [sp, #0x28]
-   818f4: f9400fe1     	ldr	x1, [sp, #0x18]
-   818f8: f9400be0     	ldr	x0, [sp, #0x10]
-   818fc: 8b000020     	add	x0, x1, x0
-   81900: 9100fc00     	add	x0, x0, #0x3f
-   81904: 927ae400     	and	x0, x0, #0xffffffffffffffc0
-   81908: f90013e0     	str	x0, [sp, #0x20]
-   8190c: 14000006     	b	0x81924 <flush_and_invalidate_dcache_range+0x4c>
-   81910: f94017e0     	ldr	x0, [sp, #0x28]
-   81914: 97ffffb1     	bl	0x817d8 <dcache_clean_invalidate_by_va>
-   81918: f94017e0     	ldr	x0, [sp, #0x28]
-   8191c: 91010000     	add	x0, x0, #0x40
-   81920: f90017e0     	str	x0, [sp, #0x28]
-   81924: f94017e1     	ldr	x1, [sp, #0x28]
-   81928: f94013e0     	ldr	x0, [sp, #0x20]
-   8192c: eb00003f     	cmp	x1, x0
-   81930: 54ffff03     	b.lo	0x81910 <flush_and_invalidate_dcache_range+0x38>
-   81934: 97ffffb8     	bl	0x81814 <dsb_ish>
-   81938: 97ffffba     	bl	0x81820 <isb>
-   8193c: d503201f     	nop
-   81940: a8c37bfd     	ldp	x29, x30, [sp], #0x30
-   81944: d65f03c0     	ret
-
-0000000000081948 <test_array_fill>:
-   81948: a9bd7bfd     	stp	x29, x30, [sp, #-0x30]!
-   8194c: 910003fd     	mov	x29, sp
-   81950: f9000fe0     	str	x0, [sp, #0x18]
-   81954: b90017e1     	str	w1, [sp, #0x14]
-   81958: 97fffa40     	bl	0x80258 <get_curr_arr_size>
-   8195c: b9002be0     	str	w0, [sp, #0x28]
-   81960: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   81964: 91232000     	add	x0, x0, #0x8c8
-   81968: 97fffe6c     	bl	0x81318 <uart_send_string>
-   8196c: b9002fff     	str	wzr, [sp, #0x2c]
-   81970: 14000018     	b	0x819d0 <test_array_fill+0x88>
-   81974: f9400fe0     	ldr	x0, [sp, #0x18]
-   81978: b9402fe1     	ldr	w1, [sp, #0x2c]
-   8197c: b94017e2     	ldr	w2, [sp, #0x14]
-   81980: b8217802     	str	w2, [x0, x1, lsl #2]
-   81984: b9402fe1     	ldr	w1, [sp, #0x2c]
-   81988: 53057c22     	lsr	w2, w1, #5
-   8198c: 528b58a0     	mov	w0, #0x5ac5             // =23237
-   81990: 72a14f80     	movk	w0, #0xa7c, lsl #16
-   81994: 9ba07c40     	umull	x0, w2, w0
-   81998: d360fc00     	lsr	x0, x0, #32
-   8199c: 53077c00     	lsr	w0, w0, #7
-   819a0: 5290d402     	mov	w2, #0x86a0             // =34464
-   819a4: 72a00022     	movk	w2, #0x1, lsl #16
-   819a8: 1b027c00     	mul	w0, w0, w2
-   819ac: 4b000020     	sub	w0, w1, w0
-   819b0: 7100001f     	cmp	w0, #0x0
-   819b4: 54000081     	b.ne	0x819c4 <test_array_fill+0x7c>
-   819b8: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   819bc: 91236000     	add	x0, x0, #0x8d8
-   819c0: 97fffe56     	bl	0x81318 <uart_send_string>
-   819c4: b9402fe0     	ldr	w0, [sp, #0x2c]
-   819c8: 11000400     	add	w0, w0, #0x1
-   819cc: b9002fe0     	str	w0, [sp, #0x2c]
-   819d0: b9402fe1     	ldr	w1, [sp, #0x2c]
-   819d4: b9402be0     	ldr	w0, [sp, #0x28]
-   819d8: 6b00003f     	cmp	w1, w0
-   819dc: 54fffcc3     	b.lo	0x81974 <test_array_fill+0x2c>
-   819e0: d5033f9f     	dsb	sy
-   819e4: b0000000     	adrp	x0, 0x82000 <_estack_size+0x72000>
-   819e8: 91238000     	add	x0, x0, #0x8e0
-   819ec: 97fffe4b     	bl	0x81318 <uart_send_string>
-   819f0: d503201f     	nop
-   819f4: a8c37bfd     	ldp	x29, x30, [sp], #0x30
-   819f8: d65f03c0     	ret
-
-00000000000819fc <test_array_fill_incremental>:
-   819fc: a9bd7bfd     	stp	x29, x30, [sp, #-0x30]!
-   81a00: 910003fd     	mov	x29, sp
-   81a04: f9000fe0     	str	x0, [sp, #0x18]
-   81a08: 97fffa14     	bl	0x80258 <get_curr_arr_size>
-   81a0c: b9002be0     	str	w0, [sp, #0x28]
-   81a10: b9002fff     	str	wzr, [sp, #0x2c]
-   81a14: 14000008     	b	0x81a34 <test_array_fill_incremental+0x38>
-   81a18: f9400fe0     	ldr	x0, [sp, #0x18]
-   81a1c: b9402fe1     	ldr	w1, [sp, #0x2c]
-   81a20: b9402fe2     	ldr	w2, [sp, #0x2c]
-   81a24: b8217802     	str	w2, [x0, x1, lsl #2]
-   81a28: b9402fe0     	ldr	w0, [sp, #0x2c]
-   81a2c: 11000400     	add	w0, w0, #0x1
-   81a30: b9002fe0     	str	w0, [sp, #0x2c]
-   81a34: b9402fe1     	ldr	w1, [sp, #0x2c]
-   81a38: b9402be0     	ldr	w0, [sp, #0x28]
-   81a3c: 6b00003f     	cmp	w1, w0
-   81a40: 54fffec3     	b.lo	0x81a18 <test_array_fill_incremental+0x1c>
-   81a44: 52800020     	mov	w0, #0x1                // =1
-   81a48: 97fffe4b     	bl	0x81374 <uart_line_breaks>
-   81a4c: d503201f     	nop
-   81a50: a8c37bfd     	ldp	x29, x30, [sp], #0x30
-   81a54: d65f03c0     	ret
-
-0000000000081a58 <test_array_increment>:
-   81a58: a9bd7bfd     	stp	x29, x30, [sp, #-0x30]!
-   81a5c: 910003fd     	mov	x29, sp
-   81a60: f9000fe0     	str	x0, [sp, #0x18]
-   81a64: 97fff9fd     	bl	0x80258 <get_curr_arr_size>
-   81a68: b9002be0     	str	w0, [sp, #0x28]
-   81a6c: b9002fff     	str	wzr, [sp, #0x2c]
-   81a70: 1400000b     	b	0x81a9c <test_array_increment+0x44>
-   81a74: f9400fe0     	ldr	x0, [sp, #0x18]
-   81a78: b9402fe1     	ldr	w1, [sp, #0x2c]
-   81a7c: b8617800     	ldr	w0, [x0, x1, lsl #2]
-   81a80: 11000402     	add	w2, w0, #0x1
-   81a84: f9400fe0     	ldr	x0, [sp, #0x18]
-   81a88: b9402fe1     	ldr	w1, [sp, #0x2c]
-   81a8c: b8217802     	str	w2, [x0, x1, lsl #2]
-   81a90: b9402fe0     	ldr	w0, [sp, #0x2c]
-   81a94: 11000400     	add	w0, w0, #0x1
-   81a98: b9002fe0     	str	w0, [sp, #0x2c]
-   81a9c: b9402fe1     	ldr	w1, [sp, #0x2c]
-   81aa0: b9402be0     	ldr	w0, [sp, #0x28]
-   81aa4: 6b00003f     	cmp	w1, w0
-   81aa8: 54fffe63     	b.lo	0x81a74 <test_array_increment+0x1c>
-   81aac: d503201f     	nop
-   81ab0: d503201f     	nop
-   81ab4: a8c37bfd     	ldp	x29, x30, [sp], #0x30
-   81ab8: d65f03c0     	ret
-
-0000000000081abc <memzero>:
-   81abc: f800841f     	str	xzr, [x0], #0x8
-   81ac0: f1002021     	subs	x1, x1, #0x8
-   81ac4: 54ffffcc     	b.gt	0x81abc <memzero>
-   81ac8: d65f03c0     	ret
-
-0000000000081acc <delay>:
-   81acc: f1000400     	subs	x0, x0, #0x1
-   81ad0: 54ffffe1     	b.ne	0x81acc <delay>
-   81ad4: d65f03c0     	ret
-
-0000000000081ad8 <put32>:
-   81ad8: b9000001     	str	w1, [x0]
-   81adc: d65f03c0     	ret
-
-0000000000081ae0 <get32>:
-   81ae0: b9400000     	ldr	w0, [x0]
-   81ae4: d65f03c0     	ret
