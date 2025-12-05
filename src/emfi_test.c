@@ -22,7 +22,7 @@
 #include "pl011_uart.h"
 #include "checksum.h"
 #include "commands.h"
-#include "ram_writeback.h"
+#include <stddef.h>
 
 /*
  * Implements Electro-Magnetic Fault Injection (EMFI) tests for PiBase.
@@ -38,6 +38,7 @@
  * over the serial interface.
  */
 
+#define CACHE_LINE_BYTES 64
 #define INTERVAL 128
 #define VIEW_ARR_ELEMENTS 256
 #define SYSTEM_TIMER_BASE 0xFE003000
